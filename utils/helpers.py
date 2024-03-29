@@ -1,6 +1,6 @@
 import functools
 import time
-from typing import Callable, List, Tuple
+from typing import Callable, List
 
 
 # defining start time and execution time as global variables, for recursive functions
@@ -10,7 +10,7 @@ execution_time = 0
 
 def output_result(sorting_function: Callable) -> Callable:
     @functools.wraps(sorting_function)
-    def wrapper(nums_list: List[float]) -> Tuple[float, List[float]]:
+    def wrapper(nums_list: List[float]) -> List[float]:
         """ Wrapper function that measures the execution time of the sorting function,
             and how much time the function takes to execute.
 
@@ -43,6 +43,6 @@ def output_result(sorting_function: Callable) -> Callable:
 class SortingAlgorithmError(Exception):
     """ Custom exception raised for errors in selecting a sorting algorithm."""
 
-    def __init__(self, message="Invalid sorting algorithm number."):
+    def __init__(self, message="Invalid sorting algorithm."):
         self.message = message
         super().__init__(self.message)
